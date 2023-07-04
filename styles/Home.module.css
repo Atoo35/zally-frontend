@@ -2,6 +2,23 @@
   padding: 0 2rem;
 }
 
+.header > ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+.header > ul > li {
+  margin: 1rem 2rem;
+}
+.header > ul > li > a {
+  font-size: 1.5rem;
+}
+.posts {
+  list-style: none;
+  padding: 0;
+  color: #0000ff;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;
