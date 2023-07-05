@@ -43,7 +43,8 @@ export const AuthContextProvider = ({ children }) => {
         return { verified: true }
     }
 
-    const logout = () => {
+    const logout = async () => {
+        await post('/auth/logout', { email: user.email });
         sessionStorage.removeItem('user')
         setUser(null)
     }
