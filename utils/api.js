@@ -28,11 +28,8 @@ const post = async (endpoint, body, token) => {
             body,
             // getHeaders(token)
         );
-        console.log(response);
         return response.data;
     } catch (err) {
-        console.log('error in post')
-        console.error(err?.response?.data || err);
         return err?.response?.data || err;
     }
 };
@@ -40,39 +37,10 @@ const post = async (endpoint, body, token) => {
 const get = async (endpoint, token) => {
     try {
         const response = await axios.get(API_URL + endpoint);
-        console.log('response in get', response)
         return response.data;
     } catch (err) {
-        console.log('error in get', err)
-        console.error(err?.response?.data || err);
         return err?.response?.data || err;
     }
 };
 
-const put = async (endpoint, body, token = null) => {
-    try {
-        const response = await axios.put(
-            API_URL + endpoint,
-            body,
-            // getHeaders(token)
-        );
-        console.log(response.data);
-        return response.data;
-    } catch (err) {
-        console.error(err?.response?.data || err);
-        return err?.response?.data || err;
-    }
-};
-
-const remove = async (endpoint, token = null) => {
-    try {
-        const response = await axios.delete(API_URL + endpoint, getHeaders(token));
-        console.log(response.data);
-        return response.data;
-    } catch (err) {
-        console.error(err?.response?.data || err);
-        return err?.response?.data || err;
-    }
-};
-
-export { post, get, put, remove };
+export { post, get };

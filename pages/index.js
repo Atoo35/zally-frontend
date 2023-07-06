@@ -17,9 +17,14 @@ export default function Home () {
   return (
     <>
       {user && <div className={styles.container}>
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}>
           <Stack spacing={2} >
-            <h1>This is Profile Page</h1>
+            <h1>This is Home Page</h1>
             <h3>Welcome {user.email}</h3>
           </Stack>
         </Box>

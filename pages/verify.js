@@ -10,7 +10,6 @@ export default function Verify () {
     useEffect(() => {
         const verifyToken = async () => {
             const response = await verify(token);
-            console.log('response in js', response)
             if (response.verified) {
                 router.push('/')
             } else {

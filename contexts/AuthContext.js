@@ -18,13 +18,11 @@ export const AuthContextProvider = ({ children }) => {
         const user = sessionStorage.getItem('user')
         if (user) {
             setUser(JSON.parse(user))
-            router.push('/')
         }
     }, [])
 
     const sendMagicLink = async (email) => {
         const response = await post('/auth/send-link', { email });
-        console.log('response in send', response);
         if (response.error) {
             return { linkSent: false, error: response.message }
         }
@@ -34,7 +32,6 @@ export const AuthContextProvider = ({ children }) => {
 
     const verify = async (token) => {
         const response = await get(`/auth/verify?token=${token}`);
-        console.log('response in verify', response);
         if (response.error) {
             return { verified: false, error: response.message }
         }
@@ -44,9 +41,11 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     const logout = async () => {
-        await post('/auth/logout', { email: user.email });
-        sessionStorage.removeItem('user')
-        setUser(null)
+        if (user) {
+            await post('/auth/logout', { email: user.email });
+            sessionStorage.removeItem('user')
+            setUser(null)
+        }
     }
 
     const value = {
